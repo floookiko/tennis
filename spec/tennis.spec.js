@@ -72,7 +72,7 @@ describe("TENNIS", function() {
 });
 
 describe("TENNIS", function() {
-  it("A get score 40  will show 'Forty - love' score 40-0", function() {
+  it("When A get score = 40 will show 'Player A Won !!!' score 40-0", function() {
     var p = new Tennis();
     p.gamestart();
     expect("Player A Won").toBe("Player A Won");
