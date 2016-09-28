@@ -15,7 +15,7 @@ function Tennis () {
 }
 
 describe("TENNIS", function() {
-  it("should show 'love - love' on score 0-0", function() {
+  it("Game start will show 'love-love' score 0-0", function() {
     var p = new Tennis();
     p.gamestart();
     expect("love - love").toBe("love - love");
