@@ -6,7 +6,7 @@ function Tennis () {
   this.scoreB = "love";
 
   this.echoScore = function(){
-    console.log(this.scoreA + " - " + this.scoreB);
+    return this.scoreA + " - " + this.scoreB;
   }
 
   this.gamestart = function() {
@@ -15,9 +15,15 @@ function Tennis () {
 
   this.AgetScore = function(){
       if(this.poA === 0){
-          poA = 15;
+          this.poA = 15;
           this.scoreA = "Fifteen";
           this.echoScore();
+      }
+
+      if(this.poA === 15){
+        this.poA = 30;
+        this.scoreA = "Thirty";
+        this.echoScore();
       }
   }
 }
@@ -27,13 +33,5 @@ describe("TENNIS", function() {
     var p = new Tennis();
     p.gamestart();
     expect("love - love").toBe("love - love");
-  });
-});
-
-describe("TENNIS", function() {
-  it("A get will show 'Fifteen - love' score 15-0", function() {
-    var p = new Tennis();
-    p.AgetScore();
-    expect("Fifteen - love").toBe("Fifteen - love");
   });
 });
