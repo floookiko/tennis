@@ -35,3 +35,11 @@ describe("TENNIS", function() {
     expect("love - love").toBe("love - love");
   });
 });
+
+describe("TENNIS", function() {
+  it("A get will show 'Fifteen - love' score 15-0", function() {
+    var p = new Tennis();
+    p.AgetScore();
+    expect("Fifteen - love").toBe("Fifteen - love");
+  });
+});
