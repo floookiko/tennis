@@ -31,6 +31,11 @@ function Tennis () {
         this.scoreA = "Forty";
         this.echoScore();
       }
+
+      if(this.poA === 40){
+        this.poA = 0;
+        this.scoreA = "Player A Won";
+      }
   }
 }
 
