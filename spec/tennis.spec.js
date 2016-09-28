@@ -57,3 +57,11 @@ describe("TENNIS", function() {
     expect("Thirty - love").toBe("Thirty - love");
   });
 });
+
+describe("TENNIS", function() {
+  it("A get score 40  will show 'Forty - love' score 40-0", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect("Forty - love").toBe("Forty - love");
+  });
+});
