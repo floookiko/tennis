@@ -36,6 +36,12 @@ function Tennis () {
         this.poA = 0;
         return "Player A Won";
       }
+
+      if(this.poB === 0){
+          this.poB = 15;
+          this.scoreB = "Fifteen";
+          this.echoScore();
+      }
   }
 }
 
@@ -76,5 +82,13 @@ describe("TENNIS", function() {
     var p = new Tennis();
     p.gamestart();
     expect("Player A Won").toBe("Player A Won");
+  });
+});
+
+describe("TENNIS", function() {
+  it("Game start will show 'love - love' score 0-0", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect("love - Fifteen").toBe("love - Fifteen");
   });
 });
