@@ -34,7 +34,7 @@ function Tennis () {
 
       if(this.poA === 40){
         this.poA = 0;
-        this.scoreA = "Player A Won";
+        return "Player A Won";
       }
   }
 }
@@ -68,5 +68,13 @@ describe("TENNIS", function() {
     var p = new Tennis();
     p.gamestart();
     expect("Forty - love").toBe("Forty - love");
+  });
+});
+
+describe("TENNIS", function() {
+  it("A get score 40  will show 'Forty - love' score 40-0", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect("Player A Won").toBe("Player A Won");
   });
 });
