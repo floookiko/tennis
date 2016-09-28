@@ -25,6 +25,12 @@ function Tennis () {
         this.scoreA = "Thirty";
         this.echoScore();
       }
+
+      if(this.poA === 30){
+        this.poA = 40;
+        this.scoreA = "Forty";
+        this.echoScore();
+      }
   }
 }
 
