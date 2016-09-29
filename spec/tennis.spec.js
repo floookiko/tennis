@@ -36,14 +36,33 @@ function Tennis () {
         this.poA = 0;
         return "Player A Won";
       }
-
-      if(this.poB === 0){
-          this.poB = 15;
-          this.scoreB = "Fifteen";
-          this.echoScore();
-      }
   }
 }
+
+  this.BgetScore = function(){
+    if(this.poB === 0){
+        this.poB = 15;
+        this.scoreB = "Fifteen";
+        this.echoScore();
+    }
+
+    if(this.poB === 15){
+      this.poB = 30;
+      this.scoreB = "Thirty";
+      this.echoScore();
+    }
+
+    if(this.poB === 30){
+      this.poB = 40;
+      this.scoreB = "Forty";
+      this.echoScore();
+    }
+
+    if(this.poB === 40){
+      this.poB = 0;
+      return "Player B Won";
+    }
+  }
 
 describe("TENNIS", function() {
   it("Game start will show 'love - love' score 0-0", function() {
@@ -86,9 +105,17 @@ describe("TENNIS", function() {
 });
 
 describe("TENNIS", function() {
-  it("Game start will show 'love - love' score 0-0", function() {
+  it("When A get score = 40 will show 'Player A Won !!!' score 40-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("love - Fifteen").toBe("love - Fifteen");
+    expect("Player A Won").toBe("Player A Won");
+  });
+});
+
+describe("TENNIS", function() {
+  it("When A get score = 40 will show 'Player A Won !!!' score 40-0", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect("Player A Won").toBe("Player A Won");
   });
 });
