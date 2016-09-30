@@ -1,140 +1,155 @@
 function Tennis () {
-  this.poA = 0;
-  this.poB = 0;
 
-  this.scoreA = "love";
-  this.scoreB = "love";
+  var poA = 0;
+  var poB = 0;
 
-  this.echoScore = function(){
-    return this.scoreA + " - " + this.scoreB;
-  }
+  var scoreA = "love";
+  var scoreB = "love";
 
   this.gamestart = function() {
-      this.echoScore();
+    return "love - love";
+  }
+  this.rescore = function(){
+    poA = 0;
+    poB = 0;
+
+    scoreA = "love";
+    scoreB = "love";
   }
 
   this.AgetScore = function(){
-      if(this.poA === 0){
-          this.poA = 15;
-          this.scoreA = "Fifteen";
-          this.echoScore();
-      }
-
-      if(this.poA === 15){
-        this.poA = 30;
-        this.scoreA = "Thirty";
-        this.echoScore();
-      }
-
-      if(this.poA === 30){
-        this.poA = 40;
-        this.scoreA = "Forty";
-        this.echoScore();
-      }
-
-      if(this.poA === 40){
-        this.poA = 0;
-        return "Player A Won";
-      }
-      else {
-        this.BgetScore();
-      }
+    if(poA === 0){
+      poA =15;
+    }
+    else if(poA === 15){
+      poA = 30;
+    }
+    else if(poA === 30){
+      poA = 40;
+    }else if(poA === 40){
+      poA = 99;
+    }
   }
 
   this.BgetScore = function(){
-      if(this.poB === 0){
-          this.poB = 15;
-          this.scoreB = "Fifteen";
-          this.echoScore();
-      }
+    if(poB === 0){
+      poB = 15;
+    }
+    else if(poB === 15){
+      poB = 30;
+    }
+    else if(poB === 30){
+      poB = 40;
+    }
+    else if(poB === 40){
+      poB = 99;
+    }
+   }
 
-      if(this.poB === 15){
-        this.poB = 30;
-        this.scoreB = "Thirty";
-        this.echoScore();
-      }
+  this.echoScore = function(){
 
-      if(this.poB === 30){
-        this.poB = 40;
-        this.scoreB = "Forty";
-        this.echoScore();
-      }
+    if(poA === 15){
+        scoreA = "Fifteen";
+    }
+    else if(poA === 30){
+      scoreA = "Thirty";
+    }
+    else if(poA === 40){
+      scoreA = "Forty";
+    }
 
-      if(this.poB === 40){
-        this.poB = 0;
-        return "Player B Won";
-      }
+
+
+    if(poB === 15){
+        scoreB = "Fifteen";
+    }
+    else if(poB === 30){
+      scoreB = "Thirty";
+    }
+    else if(poB === 40){
+      scoreB = "Forty";
+    }
+
+
+    if(poA <= 40 && poB <= 40){
+      return scoreA + " - " + scoreB;
+    }
+    else if(poA === 99){
+      this.rescore();
+      return "Player A Won";
+
+    }else if(poB === 99){
+      this.rescore();
+      return "Player B Won";
+    }
+
   }
+
+
 }
 
+
 describe("TENNIS", function() {
+    var p = new Tennis();
+
   it("Game start will show 'love - love' score 0-0", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("love - love");
+    expect(p.gamestart()).toBe("love - love");
   });
-});
 
-describe("TENNIS", function() {
   it("A get score 15  will show 'Fifteen - love' score 15-0", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("Fifteen - love");
-  });
-});
+    p.AgetScore();
 
-describe("TENNIS", function() {
+    expect(p.echoScore()).toBe("Fifteen - love");
+  });
+
   it("A get score 30  will show 'Thirty - love' score 30-0", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("Thirty - love");
-  });
-});
+    p.AgetScore();
 
-describe("TENNIS", function() {
+    expect(p.echoScore()).toBe("Thirty - love");
+  });
+
   it("A get score 40  will show 'Forty - love' score 40-0", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("Forty - love");
-  });
-});
+    p.AgetScore();
 
-describe("TENNIS", function() {
-  it("When A get score = 40 will show 'Player A Won !!!' score 40-0", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("Player A Won");
+    expect(p.echoScore()).toBe("Forty - love");
   });
-});
 
-describe("TENNIS", function() {
+  it("A Score will show 'Player A Won ", function() {
+    p.AgetScore();
+    expect(p.echoScore()).toBe("Player A Won");
+  });
+
   it("B get score 15 will show 'love - Fifteen' score 0-15", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("love - Fifteen");
+    p.BgetScore();
+    expect(p.echoScore()).toBe("love - Fifteen");
   });
-});
 
-describe("TENNIS", function() {
   it("B get score 30 will show 'love - Thirty' score 0-30", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("love - Thirty");
+    p.BgetScore();
+    expect(p.echoScore()).toBe("love - Thirty");
   });
-});
 
-describe("TENNIS", function() {
   it("B get score 40 will show 'love - Forty' score 0-40", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("love - Forty");
-  });
-});
+    p.BgetScore();
 
-describe("TENNIS", function() {
-  it("B get score 40 will show 'Player B Won' score 0-40", function() {
-    var p = new Tennis();
-    p.gamestart();
-    expect(p.AgetScore()).toBe("Play B Won");
+    expect(p.echoScore()).toBe("love - Forty");
   });
+
+  it("B get score 40 will show 'Player B Won' ", function() {
+    p.BgetScore();
+    expect(p.echoScore()).toBe("Player B Won");
+  });
+
+  it("Score will be 15-15 ", function() {
+    p.AgetScore();
+    p.BgetScore();
+    expect(p.echoScore()).toBe("Fifteen - Fifteen");
+  });
+
+  it("Score will be 30-15 ", function() {
+    p.AgetScore();
+    expect(p.echoScore()).toBe("Thirty - Fifteen");
+  });
+
+
 });
