@@ -36,6 +36,9 @@ function Tennis () {
         this.poA = 0;
         return "Player A Won";
       }
+      else {
+        this.BgetScore();
+      }
   }
 
   this.BgetScore = function(){
@@ -68,7 +71,7 @@ describe("TENNIS", function() {
   it("Game start will show 'love - love' score 0-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("love - love").toBe("love - love");
+    expect(p.AgetScore()).toBe("love - love");
   });
 });
 
@@ -76,7 +79,7 @@ describe("TENNIS", function() {
   it("A get score 15  will show 'Fifteen - love' score 15-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("Fifteen - love").toBe("Fifteen - love");
+    expect(p.AgetScore()).toBe("Fifteen - love");
   });
 });
 
@@ -84,7 +87,7 @@ describe("TENNIS", function() {
   it("A get score 30  will show 'Thirty - love' score 30-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("Thirty - love").toBe("Thirty - love");
+    expect(p.AgetScore()).toBe("Thirty - love");
   });
 });
 
@@ -92,7 +95,7 @@ describe("TENNIS", function() {
   it("A get score 40  will show 'Forty - love' score 40-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("Forty - love").toBe("Forty - love");
+    expect(p.AgetScore()).toBe("Forty - love");
   });
 });
 
@@ -100,14 +103,38 @@ describe("TENNIS", function() {
   it("When A get score = 40 will show 'Player A Won !!!' score 40-0", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("Player A Won").toBe("Player A Won");
+    expect(p.AgetScore()).toBe("Player A Won");
   });
 });
 
 describe("TENNIS", function() {
-  it("B get score 15 will show score 0-15", function() {
+  it("B get score 15 will show 'love - Fifteen' score 0-15", function() {
     var p = new Tennis();
     p.gamestart();
-    expect("love - Fifteen").toBe("love - Fifteen");
+    expect(p.AgetScore()).toBe("love - Fifteen");
+  });
+});
+
+describe("TENNIS", function() {
+  it("B get score 30 will show 'love - Thirty' score 0-30", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect(p.AgetScore()).toBe("love - Thirty");
+  });
+});
+
+describe("TENNIS", function() {
+  it("B get score 40 will show 'love - Forty' score 0-40", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect(p.AgetScore()).toBe("love - Forty");
+  });
+});
+
+describe("TENNIS", function() {
+  it("B get score 40 will show 'Player B Won' score 0-40", function() {
+    var p = new Tennis();
+    p.gamestart();
+    expect(p.AgetScore()).toBe("Play B Won");
   });
 });
